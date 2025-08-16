@@ -115,7 +115,7 @@ class WristbandJwtValidatorImpl(WristbandJwtValidator):
         - Supported algorithm (RS256)
         - Valid signature
         - Matching issuer
-        - Expiration (exp) and not-before (nbf) claims
+        - Expiration
 
         Args:
             token: A raw JWT token string

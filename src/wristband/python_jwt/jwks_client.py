@@ -1,12 +1,3 @@
-"""
-Internal JWKS (JSON Web Key Set) client for fetching Wristband keys.
-
-This client handles the complexities of JWKS key retrieval, validation, conversion,
-and caching for JWT signature verification. It implements security best practices
-including key strength validation, proper ASN.1 encoding, and efficient LRU caching
-to minimize network requests.
-"""
-
 import time
 from typing import Dict
 

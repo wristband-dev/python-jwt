@@ -1,5 +1,4 @@
 from unittest.mock import Mock, patch
-
 import pytest
 
 from wristband.python_jwt.utils.crypto import (
@@ -14,9 +13,6 @@ from wristband.python_jwt.utils.crypto import (
 
 
 class TestCryptoUtils:
-    """Test suite for crypto utility functions."""
-
-    # Test vectors matching TypeScript implementation
     BASE64URL_TEST_VECTORS = {
         "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9": '{"alg":"RS256","typ":"JWT"}',
         "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0": '{"sub":"1234567890","name":"John Doe"}',
@@ -53,8 +49,6 @@ DQIDAQAB
 
 
 class TestBase64urlDecode:
-    """Test base64url decoding functionality."""
-
     def test_valid_inputs(self):
         """Should decode valid base64url inputs correctly."""
         for input_str, expected in TestCryptoUtils.BASE64URL_TEST_VECTORS.items():
@@ -189,8 +183,6 @@ class TestBase64urlDecodeBytes:
 
 
 class TestVerifyRS256Signature:
-    """Test RS256 signature verification."""
-
     def test_input_validation_empty_data(self):
         """Should return False for empty data."""
         result = verify_rs256_signature("", "signature", TestCryptoUtils.TEST_PUBLIC_KEY)
@@ -288,8 +280,6 @@ class TestVerifyRS256Signature:
 
 
 class TestValidateAlgorithm:
-    """Test algorithm validation functionality."""
-
     def test_allowlist_validation_accept_allowed(self):
         """Should accept algorithms in allowlist."""
         assert validate_algorithm("RS256", ["RS256"]) is True
@@ -401,8 +391,6 @@ class TestValidateAlgorithm:
 
 
 class TestImportRSAPublicKey:
-    """Test RSA public key import functionality."""
-
     def test_valid_key_import(self):
         """Should import valid RSA public key."""
         key = _import_rsa_public_key(TestCryptoUtils.TEST_PUBLIC_KEY)
@@ -492,8 +480,6 @@ invalid-base64-data-here
 
 
 class TestIntegrationScenarios:
-    """Test integration scenarios combining multiple functions."""
-
     def test_complete_jwt_header_decoding_workflow(self):
         """Should handle complete JWT header decoding workflow."""
         jwt_header = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
@@ -637,8 +623,6 @@ class TestErrorHandlingAndSecurity:
 
 
 class TestConstants:
-    """Test module constants."""
-
     def test_pem_header_constant(self):
         """Should have correct PEM header constant."""
         assert PEM_HEADER == "-----BEGIN PUBLIC KEY-----"

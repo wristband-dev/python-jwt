@@ -9,8 +9,6 @@ from wristband.python_jwt.validator import WristbandJwtValidatorImpl, create_wri
 
 
 class TestWristbandJwtValidatorImpl:
-    """Test WristbandJwtValidatorImpl class."""
-
     def setup_method(self):
         """Set up test fixtures."""
         self.valid_issuer = "https://test.wristband.dev"

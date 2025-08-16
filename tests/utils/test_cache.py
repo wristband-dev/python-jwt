@@ -1,6 +1,5 @@
 import threading
 import time
-
 import pytest
 
 from wristband.python_jwt.models import CacheOptions, LRUNode
@@ -8,8 +7,6 @@ from wristband.python_jwt.utils.cache import LRUCache
 
 
 class TestLRUCache:
-    """Test suite for LRU Cache implementation."""
-
     def test_constructor_valid_options(self):
         """Should create cache with valid options."""
         cache = LRUCache(CacheOptions(max_size=10))
@@ -63,8 +60,6 @@ class TestLRUCache:
 
 
 class TestLRUCacheBasicOperations:
-    """Test basic cache operations."""
-
     @pytest.fixture
     def cache(self):
         """Create a fresh cache for each test."""
@@ -180,8 +175,6 @@ class TestLRUCacheBasicOperations:
 
 
 class TestLRUEviction:
-    """Test LRU eviction behavior."""
-
     @pytest.fixture
     def cache(self):
         """Create a fresh cache for each test."""
@@ -285,8 +278,6 @@ class TestLRUEviction:
 
 
 class TestTTLFunctionality:
-    """Test TTL (Time-To-Live) functionality."""
-
     @pytest.fixture
     def cache(self):
         """Create a fresh cache with TTL for each test."""
@@ -399,8 +390,6 @@ class TestTTLFunctionality:
 
 
 class TestGetStats:
-    """Test cache statistics functionality."""
-
     def test_return_correct_statistics(self):
         """Should return correct statistics."""
         cache = LRUCache(CacheOptions(max_size=10))
@@ -434,8 +423,6 @@ class TestGetStats:
 
 
 class TestEdgeCases:
-    """Test edge cases and boundary conditions."""
-
     def test_rapid_sequential_operations(self):
         """Should handle rapid sequential operations."""
         cache = LRUCache(CacheOptions(max_size=100))
@@ -524,8 +511,6 @@ class TestEdgeCases:
 
 
 class TestConsistencyAndStateManagement:
-    """Test cache consistency and state management."""
-
     @pytest.fixture
     def cache(self):
         """Create a fresh cache for each test."""
@@ -589,8 +574,6 @@ class TestConsistencyAndStateManagement:
 
 
 class TestDoublyLinkedListEdgeCases:
-    """Test doubly-linked list edge cases."""
-
     @pytest.fixture
     def cache(self):
         """Create a fresh cache for each test."""
@@ -681,8 +664,6 @@ class TestDoublyLinkedListEdgeCases:
 
 
 class TestMemoryAndResourceManagement:
-    """Test memory and resource management."""
-
     def test_not_grow_beyond_max_size(self):
         """Should not grow beyond maxSize."""
         cache = LRUCache(CacheOptions(max_size=10))
@@ -744,8 +725,6 @@ class TestMemoryAndResourceManagement:
 
 
 class TestThreadSafety:
-    """Test thread safety features."""
-
     def test_thread_safe_operations(self):
         """Should handle concurrent operations safely."""
         cache = LRUCache(CacheOptions(max_size=100))
@@ -829,8 +808,6 @@ class TestThreadSafety:
 
 
 class TestTimingAndPerformance:
-    """Test timing-related functionality and performance characteristics."""
-
     def test_ttl_calculation_precision(self):
         """Should handle TTL calculations with precise timing."""
         # Test with longer TTL to be more reliable
@@ -951,8 +928,6 @@ class TestTimingAndPerformance:
 
 
 class TestErrorHandling:
-    """Test error handling and edge cases."""
-
     def test_invalid_cache_options_types(self):
         """Should handle invalid types gracefully."""
         with pytest.raises(ValueError):
@@ -999,8 +974,6 @@ class TestErrorHandling:
 
 
 class TestLRUNodeModel:
-    """Test the LRUNode model directly."""
-
     def test_lru_node_initialization(self):
         """Should initialize LRUNode correctly."""
         node = LRUNode()
@@ -1035,8 +1008,6 @@ class TestLRUNodeModel:
 
 
 class TestCacheOptionsModel:
-    """Test the CacheOptions model directly."""
-
     def test_cache_options_initialization(self):
         """Should initialize CacheOptions correctly."""
         options = CacheOptions(max_size=100)
@@ -1062,7 +1033,6 @@ class TestCacheOptionsModel:
         assert options.ttl == 86400000
 
 
-# Integration tests combining multiple features
 class TestIntegration:
     """Integration tests combining multiple cache features."""
 

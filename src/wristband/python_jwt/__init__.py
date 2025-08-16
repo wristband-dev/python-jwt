@@ -29,7 +29,6 @@ Example:
     ```
 """
 
-# SDK main interface and models
 from .models import (
     JWTPayload,
     JwtValidationResult,

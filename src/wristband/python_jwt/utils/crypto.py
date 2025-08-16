@@ -160,12 +160,8 @@ def verify_rs256_signature(data: str, signature: str, public_key_pem: str) -> bo
 
         # Verify signature using cryptography library with RS256 (RSASSA-PKCS1-v1_5 + SHA-256)
         # Will raise Exception if verification fails.
-        public_key.verify(
-            signature_bytes,
-            data_bytes,
-            padding.PKCS1v15(),
-            hashes.SHA256(),
-        )
+        public_key.verify(signature_bytes, data_bytes, padding.PKCS1v15(), hashes.SHA256())
+
         return True
 
     except Exception:

@@ -1,10 +1,3 @@
-"""
-Type definitions for Wristband JWT validation SDK.
-
-This module provides comprehensive type definitions for JWT validation, including
-external interfaces for SDK consumers and internal types for implementation details.
-"""
-
 from typing import Any, Dict, List, Optional, Protocol, Union, cast
 
 # ////////////////////////////////////

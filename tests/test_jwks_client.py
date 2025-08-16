@@ -25,27 +25,20 @@ def create_1024_bit_modulus():
     return base64.b64encode(bytes_data).decode("ascii").replace("+", "-").replace("/", "_").replace("=", "")
 
 
-# Test constants using actual model types
 VALID_JWK_DICT = {"kty": "RSA", "kid": "test-key-id", "use": "sig", "n": create_2048_bit_modulus(), "e": "AQAB"}
-
 WEAK_JWK_DICT = {"kty": "RSA", "kid": "weak-key-id", "use": "sig", "n": create_1024_bit_modulus(), "e": "AQAB"}
-
 VALID_JWKS_RESPONSE_DICT = {
     "keys": [
         VALID_JWK_DICT,
         {"kty": "RSA", "kid": "another-key-id", "use": "sig", "n": create_2048_bit_modulus(), "e": "AQAB"},
     ]
 }
-
-# Create actual model instances
 VALID_JWK = JWKSKey(VALID_JWK_DICT)
 WEAK_JWK = JWKSKey(WEAK_JWK_DICT)
 VALID_JWKS_RESPONSE = JWKSResponse(VALID_JWKS_RESPONSE_DICT)
 
 
 class TestJWKSClientConstructor:
-    """Test JWKS client constructor."""
-
     def test_constructor_with_null_config(self):
         """Should throw when config is None."""
         with pytest.raises(ValueError, match="A valid JWKS URI is required"):
@@ -113,8 +106,6 @@ class TestJWKSClientConstructor:
 
 
 class TestJWKSClientFactoryFunction:
-    """Test factory function."""
-
     def test_create_client_with_correct_configuration(self):
         """Should create client with correct configuration."""
         config = JWKSClientConfig(jwks_uri="https://test.example.com/jwks", cache_max_size=25, cache_ttl=7200000)
@@ -138,8 +129,6 @@ class TestJWKSClientFactoryFunction:
 
 
 class TestJWKSClientConstants:
-    """Test constants."""
-
     def test_retry_delay_constant(self):
         """Should have correct retry delay constant."""
         assert JWKS_RETRY_DELAY_MS == 100
@@ -150,8 +139,6 @@ class TestJWKSClientConstants:
 
 
 class TestJWKSClientGetSigningKey:
-    """Test get_signing_key method."""
-
     @pytest.fixture(autouse=True)
     def setup_client(self):
         """Setup client before each test."""
@@ -411,8 +398,6 @@ class TestJWKSClientGetSigningKey:
 
 
 class TestJWKSClientNetworkRetry:
-    """Test network retry logic."""
-
     def test_retry_on_http_error_and_succeed(self):
         """Should retry on HTTP error response and eventually succeed."""
         config = JWKSClientConfig(jwks_uri="https://test.example.com/jwks")
@@ -473,8 +458,6 @@ class TestJWKSClientNetworkRetry:
 
 
 class TestJWKSClientCacheManagement:
-    """Test cache management."""
-
     def test_clear_cached_keys(self):
         """Should clear all cached keys."""
         config = JWKSClientConfig(jwks_uri="https://test.example.com/jwks", cache_max_size=3)
@@ -529,8 +512,6 @@ class TestJWKSClientCacheManagement:
 
 
 class TestJWKSClientConcurrentRequests:
-    """Test concurrent request handling."""
-
     @pytest.fixture(autouse=True)
     def setup_client(self):
         """Setup client before each test."""
@@ -618,8 +599,6 @@ class TestJWKSClientConcurrentRequests:
 
 
 class TestJWKSClientPEMFormattingEdgeCases:
-    """Test PEM formatting edge cases."""
-
     @pytest.fixture(autouse=True)
     def setup_client(self):
         """Setup client before each test."""
@@ -736,8 +715,6 @@ class TestJWKSClientPEMFormattingEdgeCases:
 
 
 class TestJWKSClientPEMConversion:
-    """Test PEM conversion functionality."""
-
     @pytest.fixture(autouse=True)
     def setup_client(self):
         """Setup client before each test."""

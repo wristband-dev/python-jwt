@@ -1,7 +1,3 @@
-"""
-Utility modules for Wristband JWT validation SDK.
-"""
-
 from .cache import LRUCache
 from .crypto import (
     base64url_decode,

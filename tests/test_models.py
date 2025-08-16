@@ -14,8 +14,6 @@ from wristband.python_jwt.models import (
 
 
 class TestWristbandJwtValidatorConfig:
-    """Test WristbandJwtValidatorConfig class."""
-
     def test_initialization_required_params(self):
         """Should initialize with required parameters."""
         config = WristbandJwtValidatorConfig("app.wristband.dev")
@@ -54,8 +52,6 @@ class TestWristbandJwtValidatorConfig:
 
 
 class TestJWTPayload:
-    """Test JWTPayload class."""
-
     @pytest.fixture
     def sample_payload_dict(self):
         """Sample JWT payload for testing."""
