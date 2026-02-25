@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wristband-python-jwt"
-version = "0.1.0"
+version = "0.1.1"
 description = "Framework-agnostic Python SDK for validating JWT access tokens issued by Wristband."
 readme = "README_PYPI.md"
 license = "MIT"
@@ -13,7 +13,7 @@ authors = [
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "cryptography>=41.0.0,<45.0.0",
+    "cryptography>=44.0.3",
     "httpx>=0.24.0",
 ]
 keywords = [
